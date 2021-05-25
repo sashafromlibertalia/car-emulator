@@ -1,0 +1,242 @@
+@import "variables";
+
+body {
+  background: $background;
+}
+
+#title {
+  color: $main;
+  margin-top: 0.8em;
+  text-align: center;
+  font-family: $title;
+  font-weight: 800;
+  font-style: italic;
+}
+
+
+#container {
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+
+  & #wrapper {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+  }
+}
+
+
+#tools-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  & #tools {
+    width: 100%;
+  }
+}
+
+#wheel {
+  background-image: url("/icons/stWheel.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+
+#start-container {
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  height: initial;
+
+  & span {
+    margin: auto;
+    width: 120px;
+    height: 120px;
+    background-image: url("/icons/start-stop.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+
+#pedals-container > * {
+  cursor: pointer;
+}
+
+#clutch {
+  &:hover {
+    transform: perspective(400px) rotateX(-40deg);
+  }
+}
+
+#clutch, #brake {
+  width: 90px;
+  height: 150px;
+  background-image: url("/icons/clutch.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: all 150ms $cubic;
+
+  &:hover {
+    transform: perspective(400px) rotateX(-25deg);
+  }
+}
+
+#accelerator {
+  height: 200px;
+  background-image: url("/icons/accelerator.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 90px;
+  transition: all 150ms $cubic;
+
+  &:hover {
+    transform: perspective(400px) rotateX(25deg);
+  }
+}
+
+
+#gear-container {
+  display: flex;
+  height: 150px;
+
+  & #gear-wrapper {
+    width: 190px;
+    height: 150px;
+
+    &:first-child {
+      & .col {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        color: $non-active;
+        font-weight: bold;
+
+        & span {
+          width: 12px;
+          height: 50px;
+          background: $non-active;
+        }
+      }
+    }
+
+    #first-gears span {
+      border-radius: 3px 3px 0 0;
+    }
+
+    #last-gears span {
+      border-radius: 0 0 3px 3px;
+    }
+
+    #neutral {
+      & .col {
+        & span {
+          width: 100%;
+          height: 12px;
+          background: $main;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+}
+
+#current-fuel {
+  margin-top: 5em;
+
+  & h1 {
+    color: $main;
+    margin-top: 0.8em;
+    font-size: 60px;
+    font-family: $title;
+    font-weight: 800;
+    text-align: left;
+  }
+
+  & h4 {
+    color: $subtitle;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+
+
+.tool-container {
+  display: flex;
+  & .tool-wrapper {
+    margin: auto;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    border: .50em solid $main;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    flex-wrap: wrap;
+
+    #s-values {
+      width: 265px;
+      height: 265px;
+      border: 6px dashed $tool;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      display: flex;
+      margin: 10px auto;
+
+      .arrow-container {
+        margin: auto;
+        .arrow-wrapper {
+          .circle {
+            width: 35px;
+            height: 35px;
+            background: $tool;
+            display: block;
+            border-radius: 50%;
+          }
+
+          .arrow {
+            width: 78px;
+            height: 7px;
+            background: $main;
+            display: block;
+            border-bottom-left-radius: 100%;
+            border-bottom-right-radius: 5px;
+            border-top-left-radius: 100%;
+            border-top-right-radius: 5px;
+            z-index: 1;
+          }
+        }
+      }
+    }
+
+    .tool-subtitle {
+      width: 100%;
+      h1 {
+        text-align: center;
+        color: $main;
+        font-weight: 800;
+        font-family: $title;
+        font-size: 90px;
+      }
+
+      h4 {
+        font-style: normal;
+        font-weight: bold;
+        text-align: center;
+        font-size: 25px;
+        margin: 0;
+        color: $subtitle;
+      }
+    }
+
+  }
+}
+
