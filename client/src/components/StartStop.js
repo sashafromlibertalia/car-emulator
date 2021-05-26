@@ -1,14 +1,12 @@
-import {Component} from "react";
+import {useState} from "react";
 
-
-class StartStop extends Component {
-    render() {
-        return (
-            <div id="start-container">
-                <span></span>
-            </div>
-        );
-    }
+const StartStop = (clickState, value) => {
+    console.log(value)
+    return (
+        <div id="start-container" onClick={clickState} className={value ? "launched" : ""}>
+            <span></span>
+        </div>
+    );
 }
 
 export default StartStop

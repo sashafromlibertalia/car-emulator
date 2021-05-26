@@ -1,0 +1,13 @@
+@keyframes launch {
+  10% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(220deg);
+  }
+  100% {
+    transform: rotate(-42deg);
+  }
+}
+
+/*# sourceMappingURL=animations.css.map */

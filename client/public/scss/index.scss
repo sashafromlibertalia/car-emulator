@@ -1,4 +1,5 @@
 @import "variables";
+@import "animations";
 
 body {
   background: $background;
@@ -11,6 +12,16 @@ body {
   font-family: $title;
   font-weight: 800;
   font-style: italic;
+}
+
+code {
+  font-weight: bold;
+  font-style: italic;
+  color: dimgray;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px $code-stroke solid;
+  background: $code-background;
 }
 
 
@@ -40,7 +51,8 @@ body {
 
 #wheel {
   background-image: url("/icons/stWheel.svg");
-  background-size: cover;
+  background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;
   width: 200px;
   height: 200px;
@@ -52,14 +64,15 @@ body {
   cursor: pointer;
   display: flex;
   height: initial;
-
   & span {
     margin: auto;
+    transition: all $cubic 500ms;
     width: 120px;
     height: 120px;
     background-image: url("/icons/start-stop.svg");
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center center;
   }
 }
 
@@ -110,6 +123,16 @@ body {
     height: 150px;
 
     &:first-child {
+      #neutral {
+        & .col {
+          & span {
+            width: 100%;
+            height: 12px;
+            border-radius: 3px;
+          }
+        }
+      }
+
       & .col {
         display: flex;
         flex-wrap: wrap;
@@ -133,17 +156,6 @@ body {
 
     #last-gears span {
       border-radius: 0 0 3px 3px;
-    }
-
-    #neutral {
-      & .col {
-        & span {
-          width: 100%;
-          height: 12px;
-          background: $main;
-          border-radius: 3px;
-        }
-      }
     }
   }
 }
@@ -171,11 +183,13 @@ body {
 
 .tool-container {
   display: flex;
+  width: $size;
+  height: $size + $size/2.2;
+
   & .tool-wrapper {
-    margin: auto;
     border-radius: 50%;
-    width: 300px;
-    height: 300px;
+    width: $size;
+    height: $size;
     border: .50em solid $main;
     border-bottom-color: transparent;
     border-radius: 50%;
@@ -185,53 +199,43 @@ body {
     #s-values {
       width: 265px;
       height: 265px;
+      border: 5px dashed $tool;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      display: flex;
+      margin: auto;
+    }
+
+    #t-values {
+      width: 265px;
+      z-index: 1;
+      height: 265px;
       border: 6px dashed $tool;
       border-bottom-color: transparent;
       border-radius: 50%;
       display: flex;
-      margin: 10px auto;
-
-      .arrow-container {
-        margin: auto;
-        .arrow-wrapper {
-          .circle {
-            width: 35px;
-            height: 35px;
-            background: $tool;
-            display: block;
-            border-radius: 50%;
-          }
-
-          .arrow {
-            width: 78px;
-            height: 7px;
-            background: $main;
-            display: block;
-            border-bottom-left-radius: 100%;
-            border-bottom-right-radius: 5px;
-            border-top-left-radius: 100%;
-            border-top-right-radius: 5px;
-            z-index: 1;
-          }
-        }
-      }
+      margin: auto;
     }
 
     .tool-subtitle {
+      z-index: 1;
       width: 100%;
+      margin-top: -35px;
+
       h1 {
         text-align: center;
         color: $main;
+        margin: 0;
         font-weight: 800;
         font-family: $title;
-        font-size: 90px;
+        font-size: 70px;
       }
 
       h4 {
         font-style: normal;
         font-weight: bold;
         text-align: center;
-        font-size: 25px;
+        font-size: 20px;
         margin: 0;
         color: $subtitle;
       }
@@ -240,3 +244,241 @@ body {
   }
 }
 
+
+.arrow-container {
+  margin: auto;
+
+  .arrow-wrapper {
+    position: relative;
+
+    .circle {
+      width: 35px;
+      height: 35px;
+      background: $tool;
+      position: absolute;
+      top: -22px;
+      left: -14px;
+      transform: rotate(-42deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+
+      .arrow {
+        width: 90px;
+        height: 7px;
+        background: $main;
+        display: block;
+        position: absolute;
+        border-bottom-left-radius: 100%;
+        border-bottom-right-radius: 5px;
+        border-top-left-radius: 100%;
+        border-top-right-radius: 5px;
+        z-index: 1;
+        right: 17px;
+      }
+    }
+
+
+  }
+}
+
+
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+}
+
+.num {
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  position: absolute;
+}
+
+.container-for-stuff {
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+
+.num-s, .num-t {
+  color: $non-active;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.num-t {
+  &:nth-child(1) {
+    top: $size/3.86;
+    left: -$size/4.13;
+  }
+
+  &:nth-child(2) {
+    top: $size/5.83;
+    left: -$size/3;
+  }
+
+  &:nth-child(3) {
+    top: -$size/36.31;
+    left: -$size/2.63;
+  }
+
+  &:nth-child(4) {
+    top: -$size/4.61;
+    left: -$size/3.24;
+  }
+
+  &:nth-child(5) {
+    top: -$size/2.88;
+    left: -$size/6.12;
+  }
+
+  &:nth-child(6) {
+    top: -$size/2.62;
+    left: $size/23.4;
+  }
+
+  &:nth-child(7) {
+    top: -$size/3.29;
+    left: $size/4.23;
+  }
+
+  &:nth-child(8) {
+    top: -$size/7.48;
+    left: $size/2.88;
+  }
+
+  &:nth-child(9) {
+    top: $size/13.04;
+    left: $size/2.7;
+  }
+
+  &:nth-child(10) {
+    top: $size/4.1;
+    left: $size/3.48;
+  }
+}
+
+.num-s {
+  &:nth-child(1) {
+    top: $size/4.5;
+    left: -$size/3.5;
+  }
+
+  &:nth-child(2) {
+    top: $size/14;
+    left: -$size/3;
+  }
+
+  &:nth-child(3) {
+    top: -$size/9.3;
+    left: -$size/3;
+  }
+
+  &:nth-child(4) {
+    top: -$size/3.85;
+    left: -$size/3.95;
+  }
+
+  &:nth-child(5) {
+    top: -$size/2.88;
+    left: -$size/7.5;
+  }
+
+  &:nth-child(6) {
+    top: -$size/2.7;
+    left: $size/34;
+  }
+
+  &:nth-child(7) {
+    top: -$size/2.99;
+    left: $size/5.9;
+  }
+
+  &:nth-child(8) {
+    top: -$size/4.54;
+    left: $size/3.49;
+  }
+
+  &:nth-child(9) {
+    top: -$size/20.18;
+    left: $size/2.83;
+  }
+
+  &:nth-child(10) {
+    top: $size/6.81;
+    left: $size/3.15;
+  }
+}
+
+.launch {
+  animation: launch 2s $cubic;
+}
+
+.start-pressed {
+  &:hover span {
+    transform: scale(0.9);
+  }
+}
+
+#off-line {
+  transform: translate(-30%, -42%) rotate(-19deg);
+  height: 132%;
+  width: 96%;
+  background: $background;
+  &::before {
+    content: "";
+    background: $background;
+    display: block;
+    width: 316px;
+    height: 49%;
+    position: absolute;
+    bottom: 0;
+    left: -63%;
+    top: -8%;
+  }
+}
+
+#container-for-tachometer {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 15px solid #ECE8E8;
+  border-bottom-color: transparent;
+}
+
+#container-for-yellow-zone {
+  border-right: 8px $pre-danger-zone solid;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%) rotate(32deg);
+  border-radius: 50%;
+  border-bottom: 8px solid transparent;
+  border-top: 8px solid transparent;
+}
+
+#container-for-red-zone {
+  border-right: 8px $danger-zone solid;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%) rotate(65deg);
+  border-radius: 50%;
+  border-bottom: 8px solid transparent;
+  border-top: 8px solid transparent;
+}
+
+#hider {
+  background: $background;
+  transform: translate(-75%, 104%);
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  z-index: 1;
+}

@@ -1,0 +1,13 @@
+@keyframes launch {
+  0% {
+    transform: rotate(-42deg);
+  }
+
+  40% {
+    transform: rotate(220deg);
+  }
+
+  100% {
+    transform: rotate(-42deg);
+  }
+}
