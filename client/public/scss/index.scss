@@ -4,6 +4,19 @@
 body {
   background: $background;
 }
+@keyframes launch {
+  0% {
+    transform: rotate(-42deg);
+  }
+
+  40% {
+    transform: rotate(220deg);
+  }
+
+  100% {
+    transform: rotate(-42deg);
+  }
+}
 
 #title {
   color: $main;
@@ -81,12 +94,6 @@ code {
   cursor: pointer;
 }
 
-#clutch {
-  &:hover {
-    transform: perspective(400px) rotateX(-40deg);
-  }
-}
-
 #clutch, #brake {
   width: 90px;
   height: 150px;
@@ -94,10 +101,6 @@ code {
   background-size: contain;
   background-repeat: no-repeat;
   transition: all 150ms $cubic;
-
-  &:hover {
-    transform: perspective(400px) rotateX(-25deg);
-  }
 }
 
 #accelerator {
@@ -107,10 +110,6 @@ code {
   background-repeat: no-repeat;
   width: 90px;
   transition: all 150ms $cubic;
-
-  &:hover {
-    transform: perspective(400px) rotateX(25deg);
-  }
 }
 
 
@@ -264,6 +263,7 @@ code {
       justify-content: center;
       border-radius: 50%;
 
+
       .arrow {
         width: 90px;
         height: 7px;
@@ -282,7 +282,6 @@ code {
 
   }
 }
-
 
 
 .center {
@@ -418,9 +417,7 @@ code {
   }
 }
 
-.launch {
-  animation: launch 2s $cubic;
-}
+
 
 .start-pressed {
   &:hover span {

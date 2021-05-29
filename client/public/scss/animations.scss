@@ -1,4 +1,4 @@
-@keyframes launch {
+@keyframes launchSpeed {
   0% {
     transform: rotate(-42deg);
   }
@@ -9,5 +9,19 @@
 
   100% {
     transform: rotate(-42deg);
+  }
+}
+
+@keyframes launchTach {
+  0% {
+    transform: rotate(-42deg);
+  }
+
+  40% {
+    transform: rotate(220deg);
+  }
+
+  100% {
+    transform: rotate(-24deg);
   }
 }

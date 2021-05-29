@@ -1,15 +1,19 @@
+import {useContext} from "react";
+import {ManagerContext} from "../context/ManagerContext";
+
 const Speedometer = () => {
+    const {isLaunched, setLaunch} = useContext(ManagerContext)
     return (
         <div className="tool-container">
             <div className="tool-wrapper">
                 <div className="container-for-stuff center">
                     <div id="s-values" className="center">
                         <div className="arrow-container">
-                                      <span className="arrow-wrapper">
-                                          <span className="circle">
-                                               <span className="arrow"/>
-                                          </span>
-                                      </span>
+                            <span className="arrow-wrapper">
+                                <span className={`${isLaunched ? "circle launch-act-speed" : "circle"}`}>
+                                    <span className="arrow"/>
+                                </span>
+                            </span>
                         </div>
                     </div>
                     <div className="center" id="numbers">

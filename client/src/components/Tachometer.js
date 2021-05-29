@@ -1,4 +1,8 @@
+import {useContext} from "react";
+import {ManagerContext} from "../context/ManagerContext";
+
 const Tachometer = () => {
+    const {isLaunched, setLaunch} = useContext(ManagerContext)
     return (
         <div className="tool-container">
             <div className="tool-wrapper">
@@ -11,7 +15,7 @@ const Tachometer = () => {
                     <div id="t-values" className="center">
                         <div className="arrow-container">
                                       <span className="arrow-wrapper">
-                                          <span className="circle">
+                                          <span className="circle" className={`${isLaunched ? "circle launch-act-tach" : "circle"}`}>
                                                <span className="arrow"/>
                                           </span>
                                       </span>

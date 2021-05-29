@@ -1,2 +1,31 @@
-// Специальный класс для отслеживания запуска зажигания
-.launched {}
+@import "animations";
+@import "variables";
+
+.launch-act-speed {
+  animation: launchSpeed 2s $cubic;
+}
+
+.launch-act-tach {
+  animation: launchTach 2s $cubic;
+  transform: rotate(-24deg) !important;
+}
+
+
+.clutch-pressed {
+  transform: perspective(400px) rotateX(-40deg);
+}
+
+.brake-pressed {
+  transform: perspective(400px) rotateX(-25deg);
+}
+
+.accelerator-pressed {
+  transform: perspective(400px) rotateX(25deg);
+}
+
+.selected {
+  color: $main !important;
+  & span {
+    background: $main !important;
+  }
+}
