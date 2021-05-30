@@ -1,19 +1,20 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import Gear from "./Gear"
 import Pedals from "./Pedals";
 import {ManagerContext} from "../context/ManagerContext";
+import {GearContext} from "../context/GearContext"
 
-const Tools = () => {
+const Tools = React.memo(() => {
     const {isLaunched, setLaunch} = useContext(ManagerContext)
-    const {press, setPress} = useContext(ManagerContext)
+    const {clutch} = useContext(GearContext)
+    const {gears} = useContext(GearContext)
 
     const toggleClass = () => {
-        if (press === "N") {
-            setLaunch(isLaunched ? false : true);
+        if (clutch) {
+            setLaunch(!isLaunched);
         } else if (isLaunched) {
             alert("Зажигание уже включено")
-        }
-        else {
+        } else {
             alert("Выжмите сцепление")
         }
     }
@@ -37,7 +38,7 @@ const Tools = () => {
             <div className="container gy-5" id="current-fuel">
                 <div className="row">
                     <div className="col-7">
-                        <h1>{press === "" ? "N" : press}</h1>
+                        <h1>{gears === "" || clutch ? "N" : gears}</h1>
                         <h4>Текущая передача</h4>
                     </div>
                     <div className="col-3">
@@ -48,6 +49,6 @@ const Tools = () => {
             </div>
         </div>
     );
-}
+})
 
 export default Tools

@@ -1,8 +1,26 @@
-import {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import {ManagerContext} from "../context/ManagerContext";
+import {GearContext} from "../context/GearContext"
+import Pressure from "pressure"
 
 const Tachometer = () => {
     const {isLaunched, setLaunch} = useContext(ManagerContext)
+    const {tachValue, setTachValue} = useContext(GearContext)
+
+    const calculateTachValue = () => {
+
+    }
+
+    useEffect(() => {
+        if (isLaunched) {
+            setTimeout(() => {
+                setTachValue(1000)
+            }, 2000)
+        }
+
+
+    })
+
     return (
         <div className="tool-container">
             <div className="tool-wrapper">
@@ -14,11 +32,12 @@ const Tachometer = () => {
                     <div id="container-for-red-zone" className="center"/>
                     <div id="t-values" className="center">
                         <div className="arrow-container">
-                                      <span className="arrow-wrapper">
-                                          <span className="circle" className={`${isLaunched ? "circle launch-act-tach" : "circle"}`}>
-                                               <span className="arrow"/>
-                                          </span>
-                                      </span>
+                            <span className="arrow-wrapper">
+                                <span className="circle"
+                                      className={`${isLaunched ? "circle launch-act-tach" : "circle"}`}>
+                                    <span className="arrow"/>
+                                </span>
+                            </span>
                         </div>
                     </div>
                     <div className="center" id="numbers">
@@ -35,7 +54,7 @@ const Tachometer = () => {
                     </div>
                 </div>
                 <div className="tool-subtitle">
-                    <h1>0</h1>
+                    <h1 className={"tool-title"}>{tachValue}</h1>
                     <h4>Тахометр, 1000 об/мин</h4>
                 </div>
             </div>
@@ -43,4 +62,4 @@ const Tachometer = () => {
     )
 }
 
-export default Tachometer
+export default React.memo(Tachometer)

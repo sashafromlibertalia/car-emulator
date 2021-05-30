@@ -1,8 +1,10 @@
-import {useContext} from "react";
-import {ManagerContext} from "../context/ManagerContext";
+import React, {useContext} from "react";
+import {ManagerContext} from "../context/ManagerContext"
+import {GearContext} from "../context/GearContext"
 
 const Speedometer = () => {
     const {isLaunched, setLaunch} = useContext(ManagerContext)
+    const {speed, setSpeed} = useContext(GearContext)
     return (
         <div className="tool-container">
             <div className="tool-wrapper">
@@ -30,7 +32,7 @@ const Speedometer = () => {
                     </div>
                 </div>
                 <div className="tool-subtitle">
-                    <h1>0</h1>
+                    <h1 className={"tool-title"}>{speed}</h1>
                     <h4>Спидометр, км/ч</h4>
                 </div>
             </div>
@@ -38,4 +40,4 @@ const Speedometer = () => {
     )
 }
 
-export default Speedometer
+export default React.memo(Speedometer)

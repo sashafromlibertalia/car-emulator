@@ -1,46 +1,47 @@
 import React, {useContext} from 'react'
-import {ManagerContext} from "../context/ManagerContext";
+import {GearContext} from "../context/GearContext"
 
 const Gear = () => {
-    const {press, setPress} = useContext(ManagerContext)
+    const {clutch, setClutch} = useContext(GearContext)
+    const {gears, setGears} = useContext(GearContext)
 
     return (
         <div id="gear-container" className="col">
             <div id="gear-wrapper" className="container">
                 <div className="row" id="first-gears">
-                    <div className={`col ${press === "R" ? "selected" : ""}`}>
+                    <div className={`col ${gears === "R" ? "selected" : ""}`}>
                         R
                         <span/>
                     </div>
-                    <div className={`col ${press === "1" ? "selected" : ""}`}>
+                    <div className={`col ${gears === "1" ? "selected" : ""}`}>
                         1
-                        <span className={`${press === "1" ? "selected" : ""}`}/>
+                        <span/>
                     </div>
-                    <div className={`col ${press === "3" ? "selected" : ""}`}>
+                    <div className={`col ${gears === "3" ? "selected" : ""}`}>
                         3
                         <span/>
                     </div>
-                    <div className={`col ${press === "5" ? "selected" : ""}`}>
+                    <div className={`col ${gears === "5" ? "selected" : ""}`}>
                         5
                         <span/>
                     </div>
                 </div>
                 <div className="row" id="neutral">
-                    <div className={`col ${["N", "P"].indexOf(press) >= 0 ? "selected" : ""}`}>
+                    <div className={`col ${clutch ? "selected" : ""}`}>
                         <span/>
                     </div>
                 </div>
                 <div className="row justify-content-end" id="last-gears">
                     <div className="col"/>
-                    <div className={`col ${press === "2" ? "selected" : ""}`}>
+                    <div className={`col ${gears === "2" ? "selected" : ""}`}>
                         <span/>
                         2
                     </div>
-                    <div className={`col ${press === "4" ? "selected" : ""}`}>
+                    <div className={`col ${gears === "4" ? "selected" : ""}`}>
                         <span/>
                         4
                     </div>
-                    <div className={`col ${press === "6" ? "selected" : ""}`}>
+                    <div className={`col ${gears === "6" ? "selected" : ""}`}>
                         <span/>
                         6
                     </div>
@@ -50,4 +51,4 @@ const Gear = () => {
     );
 }
 
-export default Gear
+export default React.memo(Gear)

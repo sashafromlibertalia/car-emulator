@@ -1,3 +1,6 @@
+import React from "react"
+import {config} from "../config"
+
 const Info = () => {
     return (
        <>
@@ -17,22 +20,22 @@ const Info = () => {
                            <div className="container">
                                <div className="row">
                                    <div className="col-6">Мощность, л.с.</div>
-                                   <div className="col">320</div>
+                                   <div className="col">{config.POWER}</div>
                                </div>
                                <hr className="my-6"/>
                                <div className="row">
                                    <div className="col-6">Крутящий момент, Нм</div>
-                                   <div className="col">580</div>
+                                   <div className="col">{config.TORQUE}</div>
                                </div>
                                <hr className="my-6"/>
                                <div className="row">
                                    <div className="col-6">Масса, кг</div>
-                                   <div className="col">1460</div>
+                                   <div className="col">{config.WEIGHT}</div>
                                </div>
                                <hr className="my-6"/>
                                <div className="row">
                                    <div className="col-6">Объем двигателя, л</div>
-                                   <div className="col">4</div>
+                                   <div className="col">{config.VOLUME}</div>
                                </div>
                                <hr className="my-6"/>
                            </div>
@@ -56,4 +59,4 @@ const Info = () => {
     );
 }
 
-export default Info;
+export default React.memo(Info)
