@@ -3,8 +3,8 @@ import {ManagerContext} from "../context/ManagerContext"
 import {GearContext} from "../context/GearContext"
 
 const Speedometer = () => {
-    const {isLaunched, setLaunch} = useContext(ManagerContext)
-    const {speed, setSpeed} = useContext(GearContext)
+    const {isLaunched} = useContext(ManagerContext)
+    const {speed} = useContext(GearContext)
     return (
         <div className="tool-container">
             <div className="tool-wrapper">

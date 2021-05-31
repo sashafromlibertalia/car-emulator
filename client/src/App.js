@@ -13,13 +13,14 @@ const App = React.memo(() => {
 
     const [speed, setSpeed] = useState(0)
     const [tachValue, setTachValue] = useState(0)
+    const [force, setForce] = useState(0)
     return (
         <ManagerContext.Provider value={{isLaunched, setLaunch}}>
             <h1 id="title">Эмулятор машины с механической КПП 🚗</h1>
             <div id="container">
                 <div id="wrapper" className="row">
                     <GearContext.Provider value={{clutch, setClutch, gears, setGears,
-                        speed, setSpeed, tachValue, setTachValue}}>
+                        speed, setSpeed, tachValue, setTachValue, force, setForce}}>
                         <div className="col-5">
                             <Tools/>
                             <Info/>

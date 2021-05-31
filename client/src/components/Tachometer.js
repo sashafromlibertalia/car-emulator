@@ -1,14 +1,20 @@
-import React, {useContext, useEffect} from "react";
-import {ManagerContext} from "../context/ManagerContext";
+import React, {useContext, useEffect} from "react"
+import {ManagerContext} from "../context/ManagerContext"
 import {GearContext} from "../context/GearContext"
+import {config} from "../config"
 import Pressure from "pressure"
 
 const Tachometer = () => {
     const {isLaunched, setLaunch} = useContext(ManagerContext)
     const {tachValue, setTachValue} = useContext(GearContext)
+    const {force, setForce} = useContext(GearContext)
 
     const calculateTachValue = () => {
-
+        if (isLaunched) {
+            setTachValue(Math.floor(force * config.PEDAL * 100))
+        } else {
+            setTachValue(1000)
+        }
     }
 
     useEffect(() => {
@@ -17,8 +23,7 @@ const Tachometer = () => {
                 setTachValue(1000)
             }, 2000)
         }
-
-
+        calculateTachValue()
     })
 
     return (

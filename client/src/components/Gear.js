@@ -2,8 +2,8 @@ import React, {useContext} from 'react'
 import {GearContext} from "../context/GearContext"
 
 const Gear = () => {
-    const {clutch, setClutch} = useContext(GearContext)
-    const {gears, setGears} = useContext(GearContext)
+    const {clutch} = useContext(GearContext)
+    const {gears} = useContext(GearContext)
 
     return (
         <div id="gear-container" className="col">
