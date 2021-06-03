@@ -1,0 +1,14 @@
+#mobile {
+  position: relative;
+}
+#mobile div {
+  margin: auto;
+}
+#mobile div h1, #mobile div h2, #mobile div h3 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+}
+
+/*# sourceMappingURL=mobile.css.map */

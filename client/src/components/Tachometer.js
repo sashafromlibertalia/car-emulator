@@ -8,12 +8,13 @@ const Tachometer = () => {
     const {isLaunched, setLaunch} = useContext(ManagerContext)
     const {tachValue, setTachValue} = useContext(GearContext)
     const {force, setForce} = useContext(GearContext)
+    const {gear} = useContext(GearContext)
 
     const calculateTachValue = () => {
         if (isLaunched) {
-            setTachValue(Math.floor(force * config.PEDAL * 100))
+            setTachValue(1000 + (Math.floor((force * config.PEDAL * 65)/100))*100)
         } else {
-            setTachValue(1000)
+            setTachValue(0)
         }
     }
 

@@ -18,7 +18,11 @@ body {
   }
 }
 
-#title {
+#desktop {
+  display: block;
+}
+
+.title {
   color: $main;
   margin-top: 0.8em;
   text-align: center;
@@ -478,4 +482,9 @@ code {
   height: 200px;
   width: 200px;
   z-index: 1;
+}
+
+
+#mobile {
+  display: none
 }

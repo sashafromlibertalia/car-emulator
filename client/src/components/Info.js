@@ -41,8 +41,7 @@ const Info = () => {
                            </div>
                            <div className="container mt-2">
                                <p>Взаимодействие с машиной происходит с помощью клавиатуры. Основная клавиша - <code>Alt</code>. Она отвечает за сцепление.<br/>
-                                   Выбор передач используется с помощью клавиш <code>1</code> , <code>2</code>,
-                                   <code>3</code>, <code>4</code>, <code>5</code>,
+                                   Выбор передач используется с помощью клавиш <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>,
                                    <code>6</code>, <code>R</code>, <code>N</code>
                                    <br/>
                                    Газ и тормоз работают по нажатию мышки на соответствующую педаль

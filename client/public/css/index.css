@@ -35,7 +35,11 @@ body {
     transform: rotate(-42deg);
   }
 }
-#title {
+#desktop {
+  display: block;
+}
+
+.title {
   color: #0d6efd;
   margin-top: 0.8em;
   text-align: center;
@@ -433,6 +437,10 @@ code {
   height: 200px;
   width: 200px;
   z-index: 1;
+}
+
+#mobile {
+  display: none;
 }
 
 /*# sourceMappingURL=index.css.map */

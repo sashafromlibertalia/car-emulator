@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Gear from "./Gear"
 import Pedals from "./Pedals";
 import {ManagerContext} from "../context/ManagerContext";
@@ -18,6 +18,25 @@ const Tools = React.memo(() => {
             alert("Выжмите сцепление")
         }
     }
+
+    const getCenter = (element) => {
+        const {left, top, width, height} = element.getBoundingClientRect()
+        let x = Math.abs(left + width / 2) > Math.PI ? Math.PI : left + width / 2
+        let y = Math.abs(top + height / 2) > Math.PI ? Math.PI : top + height / 2
+        return {
+            x: left + width / 2,
+            y: top + height / 2
+        }
+    }
+
+    useEffect(() => {
+        const arrow = document.querySelector("#wheel");
+        const arrowCenter = getCenter(arrow);
+        arrow.onmousemove = ({clientX, clientY}) => {
+            const angle = Math.atan2(clientY - arrowCenter.y, clientX - arrowCenter.x);
+            arrow.style.transform = `rotate(${angle}rad)`;
+        }
+    })
 
     return (
         <div id="tools-container">

@@ -3,6 +3,7 @@ import {GearContext} from "../context/GearContext"
 import {ManagerContext} from "../context/ManagerContext"
 import Pressure from "pressure"
 import {config} from "../config"
+import {alerts} from "../alerts"
 
 const Pedals = React.memo(() => {
     const {isLaunched} = useContext(ManagerContext)
@@ -23,9 +24,9 @@ const Pedals = React.memo(() => {
                         setGears("1")
                         setClutch(!clutch)
                     } else if (!clutch) {
-                        alert("Выжмите сцепление")
+                        alerts.clutch()
                     } else {
-                        alert("Заведите двигатель")
+                        alerts.engine()
                     }
                     break
                 case "Digit2":
@@ -33,9 +34,9 @@ const Pedals = React.memo(() => {
                         setGears("2")
                         setClutch(!clutch)
                     } else if (!clutch) {
-                        alert("Выжмите сцепление")
+                        alerts.clutch()
                     } else {
-                        alert("Заведите двигатель")
+                        alerts.engine()
                     }
                     break
                 case "Digit3":
@@ -43,9 +44,9 @@ const Pedals = React.memo(() => {
                         setGears("3")
                         setClutch(!clutch)
                     } else if (!clutch) {
-                        alert("Выжмите сцепление")
+                        alerts.clutch()
                     } else {
-                        alert("Заведите двигатель")
+                        alerts.engine()
                     }
                     break
                 case "Digit4":
@@ -53,9 +54,9 @@ const Pedals = React.memo(() => {
                         setGears("4")
                         setClutch(!clutch)
                     } else if (!clutch) {
-                        alert("Выжмите сцепление")
+                        alerts.clutch()
                     } else {
-                        alert("Заведите двигатель")
+                        alerts.engine()
                     }
                     break
                 case "Digit5":
@@ -63,9 +64,9 @@ const Pedals = React.memo(() => {
                         setGears("5")
                         setClutch(!clutch)
                     } else if (!clutch) {
-                        alert("Выжмите сцепление")
+                        alerts.clutch()
                     } else {
-                        alert("Заведите двигатель")
+                        alerts.engine()
                     }
                     break
                 case "Digit6":
@@ -73,9 +74,9 @@ const Pedals = React.memo(() => {
                         setGears("6")
                         setClutch(!clutch)
                     } else if (!clutch) {
-                        alert("Выжмите сцепление")
+                        alerts.clutch()
                     } else {
-                        alert("Заведите двигатель")
+                        alerts.engine()
                     }
                     break
                 case "KeyN":
@@ -83,9 +84,9 @@ const Pedals = React.memo(() => {
                         setGears("N")
                         setClutch(!clutch)
                     } else if (!clutch) {
-                        alert("Выжмите сцепление")
+                        alerts.clutch()
                     } else {
-                        alert("Заведите двигатель")
+                        alerts.engine()
                     }
                     break
                 case "KeyR":
@@ -93,9 +94,9 @@ const Pedals = React.memo(() => {
                         setGears("R")
                         setClutch(!clutch)
                     } else if (!clutch) {
-                        alert("Выжмите сцепление")
+                        alerts.clutch()
                     } else {
-                        alert("Заведите двигатель")
+                        alerts.engine()
                     }
                     break
             }
@@ -120,6 +121,7 @@ const Pedals = React.memo(() => {
                             Brake.style.transform = `perspective(400px) rotateX(-${value}deg)`
                         },
                         end: () => {
+                            setForce(0)
                             Brake.style.transform = `perspective(400px) rotateX(0deg)`
                         }
                     });
@@ -136,7 +138,7 @@ const Pedals = React.memo(() => {
                             Accelerator.style.transform = `perspective(400px) rotateX(${value}deg)`
                         },
                         end: () => {
-                            setForce(1)
+                            setForce(0)
                             Accelerator.style.transform = `perspective(400px) rotateX(0deg)`
                         }
                     });
